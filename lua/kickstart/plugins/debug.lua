@@ -144,5 +144,8 @@ return {
         detached = vim.fn.has 'win32' == 0,
       },
     }
+
+    -- Install Python specific config
+    require('dap-python').setup 'python3'
   end,
 }
