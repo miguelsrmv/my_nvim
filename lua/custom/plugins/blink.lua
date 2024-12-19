@@ -1,7 +1,17 @@
 return {
+  --[[
   'saghen/blink.cmp',
   -- optional: provides snippets for the snippet source
-  dependencies = 'rafamadriz/friendly-snippets',
+  dependencies = {
+    'neovim/nvim-lspconfig', -- LSP
+    'hrsh7th/cmp-buffer', -- source for text in buffer
+    'hrsh7th/cmp-path', -- source for file system paths
+    'hrsh7th/cmp-cmdline', -- source for cmdline
+    -- 'hrsh7th/cmp-omni',				-- source for omnifunc
+    'L3MON4D3/LuaSnip', -- snippet engine
+    'saadparwaiz1/cmp_luasnip', -- for autocompletion
+    'rafamadriz/friendly-snippets', -- useful snippets
+  },
 
   -- use a release tag to download pre-built binaries
   version = 'v0.*',
@@ -28,22 +38,30 @@ return {
       -- Set to 'mono' for 'Nerd Font Mono' or 'normal' for 'Nerd Font'
       -- Adjusts spacing to ensure icons are aligned
       nerd_font_variant = 'mono',
+      documentation = true,
     },
 
     -- default list of enabled providers defined so that you can extend it
     -- elsewhere in your config, without redefining it, via `opts_extend`
     sources = {
-      default = { 'lsp', 'path', 'snippets', 'buffer' },
+      default = {
+        'lsp',
+        'path',
+        'snippets',
+        'buffer',
+      },
       -- optionally disable cmdline completions
       -- cmdline = {},
     },
 
     -- experimental signature help support
-    -- signature = { enabled = true }
+    signature = { enabled = true },
   },
   -- allows extending the providers array elsewhere in your config
   -- without having to redefine it
   opts_extend = { 'sources.default' },
+  ]]
+  --
 }
 
 -- vim: ts=2 sts=2 sw=2 et
